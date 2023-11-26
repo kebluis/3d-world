@@ -20,9 +20,9 @@ const TyCharacter = (props) => {
   }, [keyPressed]);
 
   return (
-    <a.group ref={groupRef} {...props} dispose={null}>
-      <a.group name="Scene">
-        <a.group name="Armature" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+    <a.group castShadow ref={groupRef} {...props} dispose={null}>
+      <a.group castShadow name="Scene">
+        <a.group castShadow name="Armature" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
           <skinnedMesh
             receiveShadow
             castShadow

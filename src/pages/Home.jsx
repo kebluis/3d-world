@@ -2,11 +2,7 @@ import { Suspense, useContext } from "react";
 import Island from "../models/Island";
 import { Canvas } from "@react-three/fiber";
 import { Physics, RigidBody } from "@react-three/rapier";
-import {
-  Environment,
-  Fisheye,
-  KeyboardControls,
-} from "@react-three/drei";
+import { Environment, Fisheye, KeyboardControls } from "@react-three/drei";
 import Controller from "ecctrl";
 import TyCharacter from "../models/TyCharacter";
 import { PlayerControlContext } from "../store/PlayerControls";
@@ -43,22 +39,49 @@ const Home = () => {
       <Canvas shadows onPointerDown={(e) => e.target.requestPointerLock()}>
         <Suspense fallback={null}>
           <Fisheye zoom={0.4}>
-            <Environment files="/sky.hdr" background resolution={1080} />
-            <ambientLight intensity={0.4} />
+            <Environment files="/sunset.hdr" background resolution={1080} />
+            <directionalLight
+              castShadow
+              position={[0, 10, 0]}
+              intensity={7}
+              color={'red'}
+            >
+              <orthographicCamera
+                attach="shadow-camera"
+                args={[-60, 60, 60, -60]}
+              />
+            </directionalLight>
+            <ambientLight intensity={0.1} castShadow />
             <Physics timeStep="vary">
-              <KeyboardControls map={keyboardMap} onChange={(name, pressed, state) => {
-                if(name === "jump" && pressed && keyPressed !== 0) {
-                  onKeyChange(0)
-                }
-                if (["forward", "backward", "leftward", "rightward"].includes(name) && pressed && keyPressed !== 6) {
-                  onKeyChange(6)
-                }
-                if(!Object.values(state).includes(true) && keyPressed !== 0) {
-                  onKeyChange(2)
-                }
-              }}>
+              <KeyboardControls
+                map={keyboardMap}
+                onChange={(name, pressed, state) => {
+                  if (name === "jump" && pressed && keyPressed !== 0) {
+                    onKeyChange(0);
+                  }
+                  if (
+                    ["forward", "backward", "leftward", "rightward"].includes(
+                      name
+                    ) &&
+                    pressed &&
+                    keyPressed !== 6
+                  ) {
+                    onKeyChange(6);
+                  }
+                  if (
+                    !Object.values(state).includes(true) &&
+                    keyPressed !== 0
+                  ) {
+                    onKeyChange(2);
+                  }
+                }}
+              >
                 <Controller maxVelLimit={5}>
-                  <TyCharacter position={[0, -1, 0]} scale={1} rotation={[0,0,0]}/>
+                  <TyCharacter
+                    position={[0, -1, 0]}
+                    scale={1}
+                    rotation={[0, 0, 0]}
+                  />
                 </Controller>
               </KeyboardControls>
               <RigidBody type="fixed" colliders="trimesh">

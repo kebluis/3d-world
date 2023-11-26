@@ -7,7 +7,7 @@ const Island = (props) => {
   const islandRef = useRef();
   const { nodes, materials } = useGLTF(islandFab);
   return (
-    <a.group {...props} ref={islandRef} dispose={null}>
+    <a.group {...props} ref={islandRef} dispose={null} receiveShadow>
       <mesh
         castShadow
         receiveShadow
@@ -20,8 +20,8 @@ const Island = (props) => {
         geometry={nodes["Cube004_������������������"].geometry}
         material={materials.material_8}
       />
-      <a.group rotation={[-Math.PI / 2, 0, 0]} scale={61.768}>
-        <a.group rotation={[Math.PI / 2, 0, 0]}>
+      <a.group rotation={[-Math.PI / 2, 0, 0]} scale={61.768} receiveShadow>
+        <a.group rotation={[Math.PI / 2, 0, 0]} receiveShadow>
           <mesh
             castShadow
             receiveShadow
@@ -778,8 +778,9 @@ const Island = (props) => {
         position={[-30.913, 19.834, -9.314]}
         rotation={[-Math.PI / 2, 0, 1.343]}
         scale={0.444}
+        receiveShadow
       >
-        <a.group rotation={[Math.PI / 2, 0, 0]}>
+        <a.group rotation={[Math.PI / 2, 0, 0]} receiveShadow>
           <mesh
             castShadow
             receiveShadow
