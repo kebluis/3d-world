@@ -2,10 +2,16 @@ import { Suspense, useContext } from "react";
 import Island from "../models/Island";
 import { Canvas } from "@react-three/fiber";
 import { Physics, RigidBody } from "@react-three/rapier";
-import { Environment, Fisheye, KeyboardControls } from "@react-three/drei";
+import {
+  Environment,
+  Fisheye,
+  KeyboardControls,
+  Scroll,
+} from "@react-three/drei";
 import Controller from "ecctrl";
 import TyCharacter from "../models/TyCharacter";
 import { PlayerControlContext } from "../store/PlayerControls";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const Home = () => {
   const { keyPressed, onKeyChange } = useContext(PlayerControlContext);
@@ -36,15 +42,32 @@ const Home = () => {
 
   return (
     <div id="canvas-container" className="main-container">
-      <Canvas shadows onPointerDown={(e) => e.target.requestPointerLock()}>
-        <Suspense fallback={null}>
+      <Suspense
+        fallback={
+          <div className="w-96 h-96 mx-auto">
+            <Player
+              src="https://lottie.host/7db792f6-0590-41a7-b54e-7678a23142ec/B3V1S4bxJw.json"
+              autoplay
+              loop
+              className="w-96 h-96 "
+            />
+            <h1 className="text-center font-loading text-2xl">
+              Fetching the good stuff...
+            </h1>
+            <h1 className="text-center font-loading text-sm mt-16">
+              Like chips.
+            </h1>
+          </div>
+        }
+      >
+        <Canvas shadows onPointerDown={(e) => e.target.requestPointerLock()}>
           <Fisheye zoom={0.4}>
             <Environment files="/sunset.hdr" background resolution={1080} />
             <directionalLight
               castShadow
               position={[0, 10, 0]}
               intensity={7}
-              color={'red'}
+              color={"red"}
             >
               <orthographicCamera
                 attach="shadow-camera"
@@ -93,8 +116,8 @@ const Home = () => {
               </RigidBody>
             </Physics>
           </Fisheye>
-        </Suspense>
-      </Canvas>
+        </Canvas>
+      </Suspense>
     </div>
   );
 };

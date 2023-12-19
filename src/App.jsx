@@ -8,7 +8,6 @@ function App() {
   return (
     <main>
       <Router>
-        {/* <Navbar></Navbar> */}
         <Routes>
           <Route
             path="/"
@@ -19,7 +18,6 @@ function App() {
             }
           />
         </Routes>
-        {/* <Home /> */}
       </Router>
     </main>
   );

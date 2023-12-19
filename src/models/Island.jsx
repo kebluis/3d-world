@@ -7,21 +7,9 @@ const Island = (props) => {
   const islandRef = useRef();
   const { nodes, materials } = useGLTF(islandFab);
   return (
-    <a.group {...props} ref={islandRef} dispose={null} receiveShadow>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.cat_cat2_0.geometry}
-        material={materials.cat2}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes["Cube004_������������������"].geometry}
-        material={materials.material_8}
-      />
-      <a.group rotation={[-Math.PI / 2, 0, 0]} scale={61.768} receiveShadow>
-        <a.group rotation={[Math.PI / 2, 0, 0]} receiveShadow>
+    <a.group {...props} ref={islandRef} dispose={null}>
+      <a.group rotation={[-Math.PI / 2, 0, 0]} scale={61.768}>
+        <a.group rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             castShadow
             receiveShadow
@@ -778,9 +766,8 @@ const Island = (props) => {
         position={[-30.913, 19.834, -9.314]}
         rotation={[-Math.PI / 2, 0, 1.343]}
         scale={0.444}
-        receiveShadow
       >
-        <a.group rotation={[Math.PI / 2, 0, 0]} receiveShadow>
+        <a.group rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             castShadow
             receiveShadow
@@ -813,9 +800,9 @@ const Island = (props) => {
             receiveShadow
             geometry={nodes.defaultMaterial128.geometry}
             material={materials.sign_background}
-            position={[6.735, -4.292, 3.922]}
+            position={[6.604, -4.491, 4.151]}
             rotation={[0, -0.228, 0]}
-            scale={0.649}
+            scale={0.592}
           />
           <mesh
             castShadow
@@ -848,7 +835,8 @@ const Island = (props) => {
             receiveShadow
             geometry={nodes.defaultMaterial131.geometry}
             material={materials.lambert1}
-            position={[1.652, 0, -0.067]}
+            position={[1.729, 0.167, -0.162]}
+            scale={1.801}
           />
           <mesh
             castShadow
@@ -864,9 +852,27 @@ const Island = (props) => {
         receiveShadow
         geometry={nodes.Text001.geometry}
         material={nodes.Text001.material}
-        position={[1.705, 20.023, 33.871]}
-        rotation={[1.611, 0.013, -3.082]}
-        scale={0.784}
+        position={[-27.783, 17.831, -9.701]}
+        rotation={[1.562, 0.02, -1.126]}
+        scale={0.789}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Text002.geometry}
+        material={nodes.Text002.material}
+        position={[1.145, 21.364, 33.759]}
+        rotation={[1.579, -0.002, -3.122]}
+        scale={0.307}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Text003.geometry}
+        material={nodes.Text003.material}
+        position={[2.677, 21.893, 33.885]}
+        rotation={[1.539, 0.002, -3.096]}
+        scale={0.307}
       />
     </a.group>
   );
