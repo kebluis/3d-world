@@ -5,13 +5,13 @@ import { Physics, RigidBody } from "@react-three/rapier";
 import {
   Environment,
   Fisheye,
-  KeyboardControls,
-  Scroll,
+  KeyboardControls
 } from "@react-three/drei";
 import Controller from "ecctrl";
 import TyCharacter from "../models/TyCharacter";
 import { PlayerControlContext } from "../store/PlayerControls";
 import { Player } from "@lottiefiles/react-lottie-player";
+import AudioComponent from "../components/AudioComponent";
 
 const Home = () => {
   const { keyPressed, onKeyChange } = useContext(PlayerControlContext);
@@ -116,6 +116,7 @@ const Home = () => {
               </RigidBody>
             </Physics>
           </Fisheye>
+          <AudioComponent />
         </Canvas>
       </Suspense>
     </div>
