@@ -11,7 +11,7 @@ function AudioComponent() {
     const sound = new Audio(listener);
 
     const audioLoader = new AudioLoader();
-    audioLoader.load("/public/audio/bgMusic.mp3", (buffer) => {
+    audioLoader.load("/audio/bgMusic.mp3", (buffer) => {
       sound.setBuffer(buffer);
       sound.setLoop(true);
       sound.setVolume(0.5);
